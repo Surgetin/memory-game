@@ -25,6 +25,8 @@ const cardsPair = [...cards]
 const wholeCardsList = [...cardsPair, ...cards]
 const shuffledCards = wholeCardsList.sort(() => 0.5 - Math.random());
 
+let actualcard = null
+
 function initBoard() {
     const board_container = document.querySelector('.board_container');
     let displayCards = shuffledCards.map((item) => {
@@ -42,7 +44,16 @@ function initBoard() {
     }).join("");
 
     board_container.innerHTML = displayCards;
+
+    const card = document.querySelectorAll(".card");
+    card.forEach((e) => {
+        e.addEventListener("click", () => {
+            e.parentElement.classList.toggle("flipped")
+            if ()
+        })
+    })
 };
 
 initBoard()
+
 
