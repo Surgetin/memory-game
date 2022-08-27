@@ -3,7 +3,7 @@
 const cards = [
     { id: 1, name: "austria", imgSrc: "/img/austria.png"},
     { id: 2, name: "belgium", imgSrc: "/img/belgium.png"},
-    { id: 3, name: "china", imgSrc: "/img/china.png"},
+/*     { id: 3, name: "china", imgSrc: "/img/china.png"},
     { id: 4, name: "denmark", imgSrc: "/img/denmark.png"},
     { id: 5, name: "england", imgSrc: "/img/england.png"},
     { id: 6, name: "finland", imgSrc: "/img/finland.png"},
@@ -18,21 +18,21 @@ const cards = [
     { id: 15, name: "spain", imgSrc: "/img/spain.png"},
     { id: 16, name: "thailand", imgSrc: "/img/thailand.png"},
     { id: 17, name: "united-kingdom", imgSrc: "/img/united-kingdom.png"},
-    { id: 18, name: "united-states", imgSrc: "/img/united-states.png"},
+    { id: 18, name: "united-states", imgSrc: "/img/united-states.png"}, */
 ]
 
 const cardsPair = [...cards]
 const wholeCardsList = [...cardsPair, ...cards]
 const shuffledCards = wholeCardsList.sort(() => 0.5 - Math.random());
 
-let actualcard = null
+let flippedCards = [];
 
 function initBoard() {
     const board_container = document.querySelector('.board_container');
     let displayCards = shuffledCards.map((item) => {
         return `
         <div class="card_container">
-            <div class="card">
+            <div class="card" data-id="${item.id}">
                 <div class="face-side">
                     <img src="/img/question.png" alt="Question mark">
                 </div>
@@ -47,12 +47,29 @@ function initBoard() {
 
     const card = document.querySelectorAll(".card");
     card.forEach((e) => {
-        e.addEventListener("click", () => {
-            e.parentElement.classList.toggle("flipped")
-            if ()
-        })
-    })
+        e.addEventListener("click", (i) => {
+            e.parentElement.classList.add("flipped");
+            const { id } = i.currentTarget.dataset;
+            flippedCards.push(id)
+
+            if (flippedCards.length === 2) {
+                if (flippedCards[0] === flippedCards[1]) {
+                    match()
+                } else {
+                    
+                }
+            }
+        });
+    });
 };
+
+function match() {
+    console.log("match")
+}
+
+function notMatch() {
+
+}
 
 initBoard()
 
