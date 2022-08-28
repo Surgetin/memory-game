@@ -56,9 +56,11 @@ function initBoard() {
                 if (flippedCards[0] === flippedCards[1]) {
                     match()
                 } else {
-                    
-                }
-            }
+                    flippedCards.forEach((item) => {
+                        item.classList.remove("flipped")
+                    });
+                };
+            };
         });
     });
 };
